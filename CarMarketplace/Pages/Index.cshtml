@@ -1,0 +1,27 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Главная";
+    ViewData["UserName"] = Model.UserName;
+}
+
+<h3>Фильтр</h3>
+<form>
+    <select>
+        @foreach(var make in new List<string>{ "Mitsubishi", "Mazda", "Toyota", "Honda" })
+        {
+            <option>@make</option>
+        }
+    </select>
+    <select>
+        @foreach(var carModel in new List<string>{ "Alteza", "Mark 2", "Carina", "Camry", "Rav4" })
+        {
+            <option>@carModel</option>
+        }
+    </select>
+    <button type="submit">Показать</button>
+</form>
+@foreach (var owner in Model.Context.Owners)
+{
+    <p>@owner.ID    @owner.Name     @owner.City     @owner.PhoneNumber      @owner.Email</p>
+}

@@ -12,22 +12,77 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index">CarMarketplace</a>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-page="Application/PlaceAdvertisement">Разместить объявление</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-page="Application/Profile">@ViewData["UserName"]</a>
-                        </li>
-                    </ul>
-                </div>
+                <a class="navbar-brand" asp-area="" asp-page="/Index">Сайт продажи автомобилей</a>
+                <ul class="navbar-nav flex-grow-1 justify-content-end">
+                    <li class="nav-item">
+                        <a class="btn btn-outline-primary" asp-page="Application/PlaceAdvertisement">Разместить объявление</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn" asp-page="/Application/MyAdvertisements">Мои объявления</a>
+                    </li>
+                    <li class="nav-item">
+                        <button type="button" class="nav-link btn" data-bs-toggle="modal" data-bs-target="#authorisationModal">@ViewData["UserName"]</button>
+                        <div class="modal fade" id="authorisationModal" tabindex="-1" aria-labelledby="authorisationModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="authorisationModalLabel">Вход/Регистрация</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <form id="signInForm">
+                                        <div class="modal-body">
+                                            <div class="form-floating mb-3">
+                                              <input type="email" class="form-control" id="signInFormLogin">
+                                              <label for="signInFormLogin">Почта или номер телефона</label>
+                                            </div>
+                                            <div class="form-floating">
+                                              <input type="password" class="form-control" id="signInFormPassword">
+                                              <label for="signInFormPassword">Пароль</label>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary">Отмена</button>
+                                            <button type="submit" class="btn btn-primary">Войти</button>
+                                        </div>
+                                    </form>
+                                    <form class="d-none" id="signUpForm">
+                                        <div class="modal-body">
+                                            <div class="form-floating mb-3">
+                                              <input type="text" class="form-control" id="signUpFormName">
+                                              <label for="signUpFormName">Имя</label>
+                                            </div>
+                                            <div class="form-floating mb-3">
+                                              <input type="text" class="form-control" id="signUpFormCity">
+                                              <label for="signUpFormCity">Город</label>
+                                            </div>
+                                            <div class="form-floating mb-3">
+                                              <input type="tel" class="form-control" id="signUpFormPhone">
+                                              <label for="signUpFormPhone">Номер телефона</label>
+                                            </div>
+                                            <div class="form-floating mb-3">
+                                              <input type="email" class="form-control" id="signUpFormEmail">
+                                              <label for="signUpFormEmail">Почта</label>
+                                            </div>
+                                            <div class="form-floating mb-3">
+                                              <input type="password" class="form-control" id="signUpFormPassword">
+                                              <label for="signUpFormPassword">Пароль</label>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary">Отмена</button>
+                                            <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
             </div>
         </nav>
     </header>
     <div class="container">
-        <main role="main" class="pb-3">
+        <main role="main" class="pb-3">  
             @RenderBody()
         </main>
     </div>

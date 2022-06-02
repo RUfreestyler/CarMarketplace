@@ -2,6 +2,42 @@
 @model CarMarketplace.Pages.Application.PlaceAdvertisementModel
 @{
     ViewData["Title"] = "Разместить объявление";
+    ViewData["UserName"] = "Вход/Регистрация";
 }
 
-Страница размещения объявления
+<h1 class="display-6 mb-3">Новое объявление</h1>
+<form>
+    <label>Марка</label>
+    <div class="form-text mb-3">
+        <input type="text" class="form-control" id="make">
+    </div>
+    <label>Модель</label>
+    <div class="form-text mb-3">
+        <input type="text" class="form-control" id="model">
+    </div>
+    <label>Год выпуска</label>
+    <div class="form-text mb-3">
+        <input type="text" class="form-control" id="yearOfManufacture">
+    </div>
+    <label>Мощность двигателя, л.с.</label>
+    <div class="form-text mb-3">
+        <input type="text" class="form-control" id="enginePower">
+    </div>
+    <label>Тип трансмиссии</label>
+    <div class="form-text mb-3">
+        <input type="text" class="form-control" id="transmission">
+    </div>
+    <label>Техническое состояние</label>
+    <div class="form-text mb-3">
+        <input type="text" class="form-control" id="technicalState">
+    </div>
+    <label>Описание</label>
+    <div class="form-text mb-3">
+        <textarea class="form-control" id="description" rows="3"></textarea>
+    </div>
+    <label>Цена, руб.</label>
+    <div class="form-text mb-3">
+        <input type="text" class="form-control" id="price">
+    </div>
+    <button type="submit" class="btn btn-primary">Разместить объявление</button>
+</form>

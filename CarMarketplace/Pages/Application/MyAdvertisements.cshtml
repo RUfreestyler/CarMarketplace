@@ -1,0 +1,29 @@
+﻿@page
+@model CarMarketplace.Pages.Application.MyAdvertisementsModel
+@{
+    ViewData["Title"] = "Мои объявления";
+    ViewData["UserName"] = "Вход/Регистрация";
+}
+
+<h1 class="display-6 mb-3">Мои объявления</h1>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="card col my-2 bg-light" style="max-width: 540px;">
+            <div class="row g-0">
+                <div class="col-md-4">
+                    <img />
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">Заголовок объявления</h5>
+                        <p class="card-text">Цена</p>
+                        <p class="card-text">
+                            <small class="text-muted">Дата публикации</small>
+                        </p>
+                        <button type="button" class="btn btn-outline-secondary">Редактировать</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

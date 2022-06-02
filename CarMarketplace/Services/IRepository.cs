@@ -7,12 +7,9 @@ namespace CarMarketplace.Services
         public IEnumerable<Owner> GetAllOwners();
         public IEnumerable<Car> GetAllCars();
         public IEnumerable<Advertisement> GetAllAdvertisements();
-        public void AddOwner(Owner owner);
-        public void RemoveOwnerAt(int id);
-        public void AddCar(Car car);
-        public void RemoveCarAt(int id);
-        public void AddAdvertisement(Advertisement advertisement);
-        public void RemoveAdvertisementAt(int id);
-        public void SaveChanges();
+        public void Add<TEntity>(TEntity owner)
+            where TEntity : class, IMarketplaceModel;
+        public void RemoveAt<TEntity>(int id)
+            where TEntity : class, IMarketplaceModel;
     }
 }

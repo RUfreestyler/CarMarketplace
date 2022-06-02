@@ -2,6 +2,31 @@
 @model CarMarketplace.Pages.Application.ProfileModel
 @{
     ViewData["Title"] = "Профиль";
+    ViewData["UserName"] = "Вход/Регистрация";
 }
 
-Страница профиля
+<h1 class="display-6 mb-3">Профиль</h1>
+<label class="mb-3">Номер аккаунта - 123</label>
+<form>
+    <label>Имя</label>
+    <div class="form-text mb-3">
+        <input type="text" class="form-control" id="formName">
+    </div>
+    <label>Город</label>
+    <div class="form-text mb-3">
+        <input type="text" class="form-control" id="formCity">
+    </div>
+    <label>Номер телефона</label>
+    <div class="form-text mb-3">
+        <input type="tel" class="form-control" id="formPhone">
+    </div>
+    <label>Почта</label>
+    <div class="form-text mb-3">
+        <input type="email" class="form-control" id="formEmail">
+    </div>
+    <label>Пароль</label>
+    <div class="form-text mb-3">
+        <input type="password" class="form-control" id="formPassword">
+    </div>
+    <button type="submit" class="btn btn-primary">Сохранить</button>
+</form>

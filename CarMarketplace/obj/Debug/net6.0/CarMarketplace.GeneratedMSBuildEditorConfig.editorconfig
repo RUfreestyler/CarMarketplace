@@ -15,6 +15,10 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\vladm\Desktop\istu\ООП\CarMarketplace\CarMarketplace
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/vladm/Desktop/istu/ООП/CarMarketplace/CarMarketplace/Pages/Application/MyAdvertisements.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXBwbGljYXRpb25cTXlBZHZlcnRpc2VtZW50cy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/vladm/Desktop/istu/ООП/CarMarketplace/CarMarketplace/Pages/Application/PlaceAdvertisement.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXBwbGljYXRpb25cUGxhY2VBZHZlcnRpc2VtZW50LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 

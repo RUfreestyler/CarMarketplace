@@ -2,7 +2,7 @@
 @model IndexModel
 @{
     ViewData["Title"] = "Главная";
-    ViewData["UserName"] = "Вход/Регистрация";
+    ViewData["UserName"] = Model.UserName;
 }
 
 <div class="accordion" id="accordionFilter">
@@ -22,18 +22,20 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="card col my-2 bg-light" style="max-width: 540px;">
-            <div class="row g-0">
-                <div class="col-md-4">
-                    <img />
-                </div>
-                <div class="col-md-8">
-                    <div class="card-body">
-                        <h5 class="card-title">Заголовок объявления</h5>
-                        <p class="card-text">Цена</p>
-                        <p class="card-text"><small class="text-muted">Дата публикации</small></p>
+            <a class="text-dark nav-link" asp-page="Application/Advertisement">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img />
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">Заголовок объявления</h5>
+                            <p class="card-text">Цена</p>
+                            <p class="card-text"><small class="text-muted">Дата публикации</small></p>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </a>
         </div>
     </div>
 </div>

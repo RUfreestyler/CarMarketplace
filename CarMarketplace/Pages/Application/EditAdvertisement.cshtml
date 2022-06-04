@@ -1,11 +1,9 @@
 ﻿@page
-@model CarMarketplace.Pages.Application.PlaceAdvertisementModel
+@model CarMarketplace.Pages.Application.EditAdvertisementModel
 @{
-    ViewData["Title"] = "Разместить объявление";
-    ViewData["UserName"] = "Вход/Регистрация";
 }
 
-<h1 class="display-6 mb-3">Новое объявление</h1>
+<h1 class="display-6 mb-3">Редактировать объявление</h1>
 <form method="post">
     <label>Марка</label>
     <div class="form-text mb-3">
@@ -27,15 +25,9 @@
     <div class="form-text mb-3">
         <input type="text" class="form-control" id="transmission">
     </div>
-    <label class="mb-3">Техническое состояние</label>
-    <div class="form-check mb-3">
-        <input type="radio" class="form-check-input" name="technicalStateDefault" id="technicalStateNew">
-        <label class="form-check-label" for="technicalStateNew">Новая</label>
-    </div>
-    <div class="form-check mb-3">
-        <input type="radio" class="form-check-input" name="technicalStateDefault" id="technicalStateUsed">
-        <label class="form-check-label mb-3" for="technicalStateUsed">С пробегом</label>    
-        <input type="text" class="form-control disabled" id="kilometrage"/>
+    <label>Техническое состояние</label>
+    <div class="form-text mb-3">
+        <input type="text" class="form-control" id="technicalState">
     </div>
     <label>Описание</label>
     <div class="form-text mb-3">
@@ -45,5 +37,5 @@
     <div class="form-text mb-3">
         <input type="text" class="form-control" id="price">
     </div>
-    <button type="submit" class="btn btn-primary">Разместить объявление</button>
+    <button type="submit" class="btn btn-primary">Сохранить</button>
 </form>

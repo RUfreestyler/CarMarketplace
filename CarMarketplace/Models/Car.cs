@@ -2,26 +2,40 @@ using System.ComponentModel.DataAnnotations;
 
 namespace CarMarketplace.Models
 {
-    public class Car
+    public class Car : IMarketplaceModel
     {
+        [Required]
         public int ID { get; set; }
-        public string Make { get; set; }
-        public string Model { get; set; }
-        public string YearOfManufacture { get; set; }
-        public string EnginePower { get; set; }
-        public string Transmission { get; set; }
-        public string TechnicalState { get; set; }
+
+        [Required]
+        public string? Make { get; set; }
+
+        [Required]
+        public string? Model { get; set; }
+
+        [Required]
+        public string? YearOfManufacture { get; set; }
+
+        [Required]
+        public string? EnginePower { get; set; }
+
+        [Required]
+        public TransmissionType Transmission { get; set; }
+
+        [Required]
+        public CarType Type { get; set; }
+
+        public string? Kilometrage { get; set; }
+
+        [Required]
         public decimal Price { get; set; }
+
+        [Required]
         public int OwnerID { get; set; }
         
         public Car()
         {
-            Make = string.Empty;
-            Model = string.Empty;
-            YearOfManufacture = string.Empty;
-            EnginePower = string.Empty;
-            Transmission = string.Empty;
-            TechnicalState = string.Empty;
+
         }
     }
 }

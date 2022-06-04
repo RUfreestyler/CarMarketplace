@@ -1,0 +1,31 @@
+﻿@page
+@model CarMarketplace.Pages.Application.SignUpModel
+@{
+    ViewData["Title"] = "Регистрация";
+    ViewData["UserName"] = "Вход/Регистрация";
+}
+
+<form id="signUpForm" method="post">
+    <div class="form-floating mb-3">
+        <input type="text" class="form-control" id="signUpFormName" asp-for="Name">
+        <label for="signUpFormName">Имя</label>
+    </div>
+    <div class="form-floating mb-3">
+        <input type="text" class="form-control" id="signUpFormCity" asp-for="City">
+        <label for="signUpFormCity">Город</label>
+    </div>
+    <div class="form-floating mb-3">
+        <input type="tel" class="form-control" id="signUpFormPhone" asp-for="Phone">
+        <label for="signUpFormPhone">Номер телефона</label>
+    </div>
+    <div class="form-floating mb-3">
+        <input type="email" class="form-control" id="signUpFormEmail" asp-for="Email">
+        <label for="signUpFormEmail">Почта</label>
+    </div>
+    <div class="form-floating mb-3">
+        <input type="password" class="form-control" id="signUpFormPassword" asp-for="Password">
+        <label for="signUpFormPassword">Пароль</label>
+    </div>
+    <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
+</form>
+<a asp-page="SignIn"><small>Вход</small></a>

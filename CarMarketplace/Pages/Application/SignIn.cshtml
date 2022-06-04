@@ -1,0 +1,19 @@
+﻿@page
+@model CarMarketplace.Pages.Application.SignInModel
+@{
+    ViewData["Title"] = "Вход";
+    ViewData["UserName"] = Model.UserName;
+}
+
+<form id="signInForm" method="post">
+    <div class="form-floating mb-3">
+        <input type="email" class="form-control" id="signInFormLogin" asp-for="Login">
+        <label for="signInFormLogin">Почта или номер телефона</label>
+    </div>
+    <div class="form-floating mb-3">
+        <input type="password" class="form-control" id="signInFormPassword" asp-for="Password">
+        <label for="signInFormPassword">Пароль</label>
+    </div>
+    <button type="submit" class="btn btn-primary">Войти</button>
+</form>
+<a asp-page="SignUp"><small>Регистрация</small></a>

@@ -9,6 +9,9 @@ namespace CarMarketplace.Pages
     {
         private readonly ILogger<IndexModel> _logger;
 
+        [BindProperty(SupportsGet = true)]
+        public string? UserName { get; set; }
+
         public IndexModel(ILogger<IndexModel> logger)
         {
             _logger = logger;
@@ -16,7 +19,11 @@ namespace CarMarketplace.Pages
 
         public void OnGet()
         {
-
+            if(string.IsNullOrWhiteSpace(UserName))
+            {
+                UserName = "Вход/Регистрация";
+                return;
+            }     
         }
     }
 }

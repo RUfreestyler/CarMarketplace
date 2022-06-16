@@ -19,20 +19,48 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXBwbGljYXRpb25cQWR2ZXJ0aXNlbWVudC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/vladm/Desktop/istu/ООП/CarMarketplace/CarMarketplace/Pages/Application/DeleteAdvertisement.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXBwbGljYXRpb25cRGVsZXRlQWR2ZXJ0aXNlbWVudC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/vladm/Desktop/istu/ООП/CarMarketplace/CarMarketplace/Pages/Application/DeletePurchaseRequest.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXBwbGljYXRpb25cRGVsZXRlUHVyY2hhc2VSZXF1ZXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/vladm/Desktop/istu/ООП/CarMarketplace/CarMarketplace/Pages/Application/EditAdvertisement.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXBwbGljYXRpb25cRWRpdEFkdmVydGlzZW1lbnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/vladm/Desktop/istu/ООП/CarMarketplace/CarMarketplace/Pages/Application/EditPurchaseRequest.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXBwbGljYXRpb25cRWRpdFB1cmNoYXNlUmVxdWVzdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/vladm/Desktop/istu/ООП/CarMarketplace/CarMarketplace/Pages/Application/Logout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXBwbGljYXRpb25cTG9nb3V0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/vladm/Desktop/istu/ООП/CarMarketplace/CarMarketplace/Pages/Application/MyAdvertisements.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXBwbGljYXRpb25cTXlBZHZlcnRpc2VtZW50cy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/vladm/Desktop/istu/ООП/CarMarketplace/CarMarketplace/Pages/Application/MyPurchaseRequests.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXBwbGljYXRpb25cTXlQdXJjaGFzZVJlcXVlc3RzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/vladm/Desktop/istu/ООП/CarMarketplace/CarMarketplace/Pages/Application/PlaceAdvertisement.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXBwbGljYXRpb25cUGxhY2VBZHZlcnRpc2VtZW50LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/vladm/Desktop/istu/ООП/CarMarketplace/CarMarketplace/Pages/Application/PlacePurchaseRequest.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXBwbGljYXRpb25cUGxhY2VQdXJjaGFzZVJlcXVlc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/vladm/Desktop/istu/ООП/CarMarketplace/CarMarketplace/Pages/Application/Profile.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXBwbGljYXRpb25cUHJvZmlsZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/vladm/Desktop/istu/ООП/CarMarketplace/CarMarketplace/Pages/Application/PurchaseRequest.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXBwbGljYXRpb25cUHVyY2hhc2VSZXF1ZXN0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/vladm/Desktop/istu/ООП/CarMarketplace/CarMarketplace/Pages/Application/SignIn.cshtml]
@@ -41,6 +69,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/vladm/Desktop/istu/ООП/CarMarketplace/CarMarketplace/Pages/Application/SignUp.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXBwbGljYXRpb25cU2lnblVwLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/vladm/Desktop/istu/ООП/CarMarketplace/CarMarketplace/Pages/Application/SuitableCars.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXBwbGljYXRpb25cU3VpdGFibGVDYXJzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/vladm/Desktop/istu/ООП/CarMarketplace/CarMarketplace/Pages/Index.cshtml]

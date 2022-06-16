@@ -114,6 +114,62 @@ namespace CarMarketplace.Migrations
 
                     b.ToTable("Owners");
                 });
+
+            modelBuilder.Entity("CarMarketplace.Models.PurchaseRequest", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("City")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("EnginePowerLowerBound")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("EnginePowerUpperBound")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("KilometrageLowerBound")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("KilometrageUpperBound")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Make")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Model")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("OwnerID")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<decimal>("PriceLowerBound")
+                        .HasColumnType("TEXT");
+
+                    b.Property<decimal>("PriceUpperBound")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("Transmission")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("Type")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("YearOfManufactureLowerBound")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("YearOfManufactureUpperBound")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("PurchaseRequests");
+                });
 #pragma warning restore 612, 618
         }
     }

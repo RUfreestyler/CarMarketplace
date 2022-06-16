@@ -1,17 +1,29 @@
-﻿@page
+﻿@page "{id}"
 @model CarMarketplace.Pages.Application.AdvertisementModel
+@using CarMarketplace.Services
+@using System.ComponentModel.DataAnnotations
 @{
     ViewData["Title"] = "Объявление";
-    ViewData["UserName"] = "Вход/Регистрация";
 }
 
-<h1 class="display-5 mb-3" >Заголовок объявления</h1>
-<h6>Цена</h6>
-<p><small>Дата публикации</small></p>
-<h1 class="display-6 mb-3">Характеристики</h1>
+<h1 class="display-5 mb-3" >@Model.SingleAdViewModel.Title</h1>
+<h4>@Model.SingleAdViewModel.Price руб.</h4>
+<p><small>Дата публикации: @Model.SingleAdViewModel.InsertationDate.ToString("g")</small></p>
+<div class="input-group mb-3">
+  <span class="input-group-text" id="inputGroup-sizing-default">Продавец</span>
+  <input type="text" class="form-control" value="@Model.SingleAdViewModel.Name" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" readonly>
+</div>
+<div class="input-group mb-3">
+  <span class="input-group-text" id="inputGroup-sizing-default">Номер телефона</span>
+  <input type="text" class="form-control" value="@Model.SingleAdViewModel.Phone" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" readonly>
+</div>
+<h4 class="mb-3">Характеристики</h4>
 <ul class="list-group">
-  <li class="list-group-item">Год выпуска</li>
-  <li class="list-group-item">Мощность двигателя, л.с.</li>
-  <li class="list-group-item">Тип трансмиссии</li>
-  <li class="list-group-item">Техническое состояние</li>
+  <li class="list-group-item">Год выпуска: @Model.SingleAdViewModel.YearOfManufacture</li>
+  <li class="list-group-item">Мощность двигателя: @Model.SingleAdViewModel.EnginePower л.с.</li>
+  <li class="list-group-item">Тип трансмиссии: @Html.DisplayFor(x => x.SingleAdViewModel.Transmission.GetAttribute<DisplayAttribute>().Name)</li>
+  <li class="list-group-item">Техническое состояние: @Html.DisplayFor(x => x.SingleAdViewModel.Type.GetAttribute<DisplayAttribute>().Name)</li>
+  <li class="list-group-item">Пробег: @Model.SingleAdViewModel.Kilometrage км</li>
 </ul>
+<h4>Описание</h4>
+<p class="lead">@Model.SingleAdViewModel.Description</p>

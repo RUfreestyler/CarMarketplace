@@ -1,4 +1,5 @@
 ﻿using CarMarketplace.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace CarMarketplace.Services
 {
@@ -13,8 +14,11 @@ namespace CarMarketplace.Services
 
         public void Add<TEntity>(TEntity entity) where TEntity : class, IMarketplaceModel
         {
-            context.Add(entity);
-            context.SaveChanges();
+            if(entity != null)
+            {
+                context.Add(entity);
+                context.SaveChanges();
+            }         
         }
 
         public IEnumerable<Advertisement> GetAllAdvertisements()
@@ -38,10 +42,20 @@ namespace CarMarketplace.Services
                 yield return enumerator.Current;
         }
 
+        public IEnumerable<PurchaseRequest> GetAllPurchaseRequests()
+        {
+            var enumerator = context.PurchaseRequests?.AsEnumerable().GetEnumerator();
+            while (enumerator.MoveNext())
+                yield return enumerator.Current;
+        }
+
         public void Remove<TEntity>(TEntity entity) where TEntity : class, IMarketplaceModel
         {
-            context.Remove(entity);
-            context.SaveChanges();
+            if(entity != null)
+            {
+                context.Remove(entity);
+                context.SaveChanges();
+            }
         }
 
         public void RemoveAt<TEntity>(int id) where TEntity : class, IMarketplaceModel
@@ -54,10 +68,13 @@ namespace CarMarketplace.Services
             }
         }
 
-        public void Update<TEntity>(TEntity entity) where TEntity : class, IMarketplaceModel
+        public void Update<TEntity>(TEntity? entity) where TEntity : class, IMarketplaceModel
         {
-            context.Attach(entity);
-            context.SaveChanges();
+            if(entity != null)
+            {
+                context.Attach(entity);
+                context.SaveChanges();
+            }           
         }
     }
 }

@@ -1,41 +1,58 @@
-﻿@page
+﻿@page "{id}"
 @model CarMarketplace.Pages.Application.EditAdvertisementModel
 @{
+    ViewData["Title"] = "Редактирование объявления";
 }
 
 <h1 class="display-6 mb-3">Редактировать объявление</h1>
 <form method="post">
-    <label>Марка</label>
-    <div class="form-text mb-3">
-        <input type="text" class="form-control" id="make">
+    <div class="form-floating mb-3">
+        <input type="text" class="form-control" name="make" asp-for="Make" value="@Model.Make">
+        <label for="make">Марка</label>
+        <span asp-validation-for="Make"></span>
+    </div>    
+    <div class="form-floating mb-3">
+        <input type="text" class="form-control" name="model" asp-for="Model" value="@Model.Model">
+        <label for="name">Модель</label>
+        <span asp-validation-for="Model"></span>
+    </div>   
+    <div class="form-floating mb-3">
+        <input type="text" class="form-control" name="yearOfManufacture" asp-for="YearOfManufacture" value="@Model.YearOfManufacture">
+        <label for="yearOfManufacture">Год выпуска</label>
+        <span asp-validation-for="YearOfManufacture"></span>
+    </div>   
+    <div class="form-floating mb-3">
+        <input type="text" class="form-control" name="enginePower" asp-for="EnginePower" value="@Model.EnginePower">
+        <label for="enginePower">Мощность двигателя, л.с.</label>
+        <span asp-validation-for="EnginePower"></span>
+    </div>   
+    <label class="mb-3">Выберите тип трансмиссии</label>
+    <div class="form-floating mb-3">    
+        <select class="form-select" asp-for="@Model.Transmission" asp-items="Html.GetEnumSelectList(Model.Transmission.GetType())">
+
+        </select>
+    </div>   
+    <label class="mb-3">Выберите тип машины</label>
+    <div class="form-floating mb-3">     
+        <select class="form-select" asp-for="@Model.Type" asp-items="Html.GetEnumSelectList(Model.Type.GetType())">
+
+        </select>    
     </div>
-    <label>Модель</label>
-    <div class="form-text mb-3">
-        <input type="text" class="form-control" id="model">
+    <div class="form-floating mb-3">
+        <input type="text" class="form-control" name="kilometrage" asp-for="Kilometrage" value="@Model.Kilometrage">
+        <label for="kilometrage">Пробег</label>    
+        <span asp-validation-for="Kilometrage"></span>
+    </div>  
+    <div class="form-floating mb-3">
+        <textarea class="form-control" name="description" rows="3" asp-for="Description">
+            
+        </textarea>
+        <label for="description">Описание</label>
     </div>
-    <label>Год выпуска</label>
-    <div class="form-text mb-3">
-        <input type="text" class="form-control" id="yearOfManufacture">
-    </div>
-    <label>Мощность двигателя, л.с.</label>
-    <div class="form-text mb-3">
-        <input type="text" class="form-control" id="enginePower">
-    </div>
-    <label>Тип трансмиссии</label>
-    <div class="form-text mb-3">
-        <input type="text" class="form-control" id="transmission">
-    </div>
-    <label>Техническое состояние</label>
-    <div class="form-text mb-3">
-        <input type="text" class="form-control" id="technicalState">
-    </div>
-    <label>Описание</label>
-    <div class="form-text mb-3">
-        <textarea class="form-control" id="description" rows="3"></textarea>
-    </div>
-    <label>Цена, руб.</label>
-    <div class="form-text mb-3">
-        <input type="text" class="form-control" id="price">
+    <div class="form-floating mb-3">
+        <input type="text" class="form-control" name="price" asp-for="Price" value="@Model.Price">
+        <label for="price">Цена, руб.</label>
+        <span asp-validation-for="Price"></span>
     </div>
     <button type="submit" class="btn btn-primary">Сохранить</button>
 </form>

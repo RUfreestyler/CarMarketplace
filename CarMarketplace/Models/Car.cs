@@ -8,16 +8,16 @@ namespace CarMarketplace.Models
         public int ID { get; set; }
 
         [Required]
-        public string? Make { get; set; }
+        public string Make { get; set; }
 
         [Required]
-        public string? Model { get; set; }
+        public string Model { get; set; }
 
         [Required]
-        public string? YearOfManufacture { get; set; }
+        public string YearOfManufacture { get; set; }
 
         [Required]
-        public string? EnginePower { get; set; }
+        public string EnginePower { get; set; }
 
         [Required]
         public TransmissionType Transmission { get; set; }

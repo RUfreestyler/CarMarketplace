@@ -2,53 +2,69 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using CarMarketplace.Services;
 using CarMarketplace.Models;
+using System.ComponentModel.DataAnnotations;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authentication;
 
 namespace CarMarketplace.Pages.Application
 {
     public class SignUpModel : PageModel
     {
         [BindProperty]
-        public string? Name { get; set; }
+        [Required(ErrorMessage = "¬ведите им€")]
+        public string Name { get; set; }
 
         [BindProperty]
-        public string? City { get; set; }
+        [Required(ErrorMessage = "¬ведите город")]
+        public string City { get; set; }
 
         [BindProperty]
-        public string? Phone { get; set; }
+        [Required(ErrorMessage = "¬ведите номер телефона")]
+        public string Phone { get; set; }
 
         [BindProperty]
-        public string? Email { get; set; }
+        [Required(ErrorMessage = "¬ведите почту")]
+        public string Email { get; set; }
 
         [BindProperty]
-        public string? Password { get; set; }
-        private IRepository marketplaceRepository;
+        [Required(ErrorMessage = "¬ведите пароль")]
+        public string Password { get; set; }
 
-        public SignUpModel(IRepository marketplaceRepository)
+        private readonly IRepository repository;
+        private readonly IHashComputer hasher;
+
+        public SignUpModel(IRepository repository, IHashComputer hasher)
         {
-            this.marketplaceRepository = marketplaceRepository;
+            this.repository = repository;
+            this.hasher = hasher;
         }
 
-        public void OnGet()
-        {
-        }
-
-        public IActionResult OnPost()
+        public async Task<IActionResult> OnPost()
         {
             if(!ModelState.IsValid)
             {
                 return Page();
             }
 
-            var newOwner = new Owner()
+            var newUser = new Owner()
             {
                 Name = Name,
                 City = City,
                 PhoneNumber = Phone,
                 Email = Email,
-                PasswordHash = Hasher.GetHashCode(Password)
+                PasswordHash = hasher.GetHashCode(Password)
             };
-            marketplaceRepository.Add(newOwner);
-            return RedirectToPage("/Index");
+            repository.Add(newUser);
+
+            var claims = new List<Claim>()
+            {
+                new Claim("ID", repository.GetAllOwners().Where(x => x.Email == newUser.Email).FirstOrDefault().ID.ToString())
+            };
+
+            var claimsIdentity = new ClaimsIdentity(claims, "Cookies");
+            await HttpContext.SignInAsync("Cookies", new ClaimsPrincipal(claimsIdentity));
+
+            return Redirect("../Index");
         }
     }
 }

@@ -1,41 +1,41 @@
-﻿@page
-@model IndexModel
+﻿@page "{sortState?}"
+@model CarMarketplace.Pages.IndexModel
+@using CarMarketplace.Services
+@using System;
 @{
     ViewData["Title"] = "Главная";
-    ViewData["UserName"] = Model.UserName;
 }
 
-<div class="accordion" id="accordionFilter">
-    <div class="accordion-item">
-        <h2 class="accordion-header" id="heading"> 
-            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFilter" area-expanded="true" area-controls="collapseFilter">
-                Фильтр
-            </button>
-        </h2>
-        <div id="collapseFilter" class="accordion-collapse collapse show" area-labelledby="heading" data-bs-parent="accordionFilter">
-            <div class="accordion-body">
-                Здесь будет фильтр
-            </div>
-        </div>
-    </div>
+<div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+    Сортировать
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+    <li><a class="dropdown-item" asp-route-sortState="0" asp-page="Index">По дате публикации</a></li>
+    <li><a class="dropdown-item" asp-route-sortState="1" asp-page="Index">По цене, по возрастанию</a></li>
+    <li><a class="dropdown-item" asp-route-sortState="2" asp-page="Index">По цене, по убыванию</a></li>
+  </ul>
 </div>
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="card col my-2 bg-light" style="max-width: 540px;">
-            <a class="text-dark nav-link" asp-page="Application/Advertisement">
-                <div class="row g-0">
-                    <div class="col-md-4">
-                        <img />
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <h5 class="card-title">Заголовок объявления</h5>
-                            <p class="card-text">Цена</p>
-                            <p class="card-text"><small class="text-muted">Дата публикации</small></p>
+    @foreach(var adViewModel in Model.AdsViewModel)
+    {
+        <div class="row justify-content-center">
+            <div class="card col my-2 bg-light" style="max-width: 540px;">
+                <a class="text-dark nav-link" asp-route-id="@adViewModel.ID" asp-page="Application/Advertisement">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img />
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">@adViewModel.Title</h5>
+                                <p class="card-text">@adViewModel.Price руб.</p>
+                                <p class="card-text"><small class="text-muted">@adViewModel.InsertationDate.ToString("g")</small></p>                       
+                            </div>
                         </div>
                     </div>
-                </div>
-            </a>
+                </a>
+            </div>
         </div>
-    </div>
+    }
 </div>

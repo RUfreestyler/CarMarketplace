@@ -2,29 +2,33 @@
 @model CarMarketplace.Pages.Application.SignUpModel
 @{
     ViewData["Title"] = "Регистрация";
-    ViewData["UserName"] = "Вход/Регистрация";
 }
 
-<form id="signUpForm" method="post">
+<form method="post">
     <div class="form-floating mb-3">
-        <input type="text" class="form-control" id="signUpFormName" asp-for="Name">
-        <label for="signUpFormName">Имя</label>
+        <input type="text" class="form-control" name="name" asp-for="Name">
+        <label for="name">Имя</label>
+        <span asp-validation-for="Name"></span>
     </div>
-    <div class="form-floating mb-3">
-        <input type="text" class="form-control" id="signUpFormCity" asp-for="City">
-        <label for="signUpFormCity">Город</label>
+    <div class="form-floating mb-3">       
+        <input type="text" class="form-control" name="city" asp-for="City">
+        <label for="city">Город</label>
+        <span asp-validation-for="City"></span>
     </div>
-    <div class="form-floating mb-3">
-        <input type="tel" class="form-control" id="signUpFormPhone" asp-for="Phone">
-        <label for="signUpFormPhone">Номер телефона</label>
+    <div class="form-floating mb-3">        
+        <input type="tel" class="form-control" name="phone" asp-for="Phone">  
+        <label for="phone">Номер телефона</label>
+        <span asp-validation-for="Phone"></span>
     </div>
-    <div class="form-floating mb-3">
-        <input type="email" class="form-control" id="signUpFormEmail" asp-for="Email">
-        <label for="signUpFormEmail">Почта</label>
+    <div class="form-floating mb-3">        
+        <input type="email" class="form-control" name="email" asp-for="Email">     
+        <label for="email">Почта</label>
+        <span asp-validation-for="Email"></span>
     </div>
-    <div class="form-floating mb-3">
-        <input type="password" class="form-control" id="signUpFormPassword" asp-for="Password">
-        <label for="signUpFormPassword">Пароль</label>
+    <div class="form-floating mb-3">        
+        <input type="password" class="form-control" name="password" asp-for="Password">    
+        <label for="password">Пароль</label>
+        <span asp-validation-for="Password"></span>
     </div>
     <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
 </form>

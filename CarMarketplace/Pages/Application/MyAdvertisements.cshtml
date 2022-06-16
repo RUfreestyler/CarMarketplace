@@ -2,28 +2,56 @@
 @model CarMarketplace.Pages.Application.MyAdvertisementsModel
 @{
     ViewData["Title"] = "Мои объявления";
-    ViewData["UserName"] = "Вход/Регистрация";
 }
 
 <h1 class="display-6 mb-3">Мои объявления</h1>
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="card col my-2 bg-light" style="max-width: 540px;">
-            <div class="row g-0">
-                <div class="col-md-4">
-                    <img />
+    @if (!Model.AdsViewModel.Any())
+    {
+        <p class="lead">Вы ещё не разместили объявлений</p>
+    }
+    @foreach (var adViewModel in Model.AdsViewModel)
+    {
+        <div class="row justify-content-center">
+            <div class="card row my-2 bg-light" style="max-width: 540px;">
+                <div class="row justify-content-end">
+                    <button type="button" class="btn-close" aria-label="Close" data-bs-toggle="modal" data-bs-target="@string.Format($"#exampleModal{adViewModel.ID}")"></button>
                 </div>
-                <div class="col-md-8">
-                    <div class="card-body">
-                        <h5 class="card-title">Заголовок объявления</h5>
-                        <p class="card-text">Цена</p>
-                        <p class="card-text">
-                            <small class="text-muted">Дата публикации</small>
-                        </p>
-                        <button type="button" class="btn btn-outline-secondary" asp-page="EditAdvertisement">Редактировать</button>
+                <div class="modal fade" id="@string.Format($"exampleModal{adViewModel.ID}")" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Подтверждение удаления</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                Вы уверены что хотите удалить объявление "@adViewModel.Title"?
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+                                <a class="btn btn-danger" asp-route-id="@adViewModel.ID" asp-page="DeleteAdvertisement">Удалить</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
+                <a class="text-dark nav-link" asp-route-id="@adViewModel.ID" asp-page="Advertisement">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img />
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">@adViewModel.Title</h5>
+                                <p class="card-text">@adViewModel.Price</p>
+                                <p class="card-text">
+                                    <small class="text-muted">@adViewModel.InsertationDate.ToString("g")</small>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <a class="btn btn-outline-secondary my-2" asp-route-id="@adViewModel.ID" asp-page="EditAdvertisement">Редактировать</a>                               
             </div>
         </div>
-    </div>
+    }
 </div>

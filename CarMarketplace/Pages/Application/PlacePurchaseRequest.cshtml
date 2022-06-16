@@ -1,0 +1,63 @@
+﻿@page
+@model CarMarketplace.Pages.Application.PlacePurchaseRequestModel
+@using CarMarketplace.Models
+@{
+    ViewData["Title"] = "Размещение запроса";
+}
+
+<h1 class="display-6 mb-3">Размещение запроса на покупку</h1>
+<form method="post">
+    <div class="form-floating mb-3">
+        <input type="text" class="form-control" name="make" asp-for="Make">
+        <label for="make">Марка</label>
+        <span asp-validation-for="Make"></span>
+    </div>    
+    <div class="form-floating mb-3">
+        <input type="text" class="form-control" name="model" asp-for="Model">
+        <label for="name">Модель</label>
+        <span asp-validation-for="Model"></span>
+    </div>   
+    <label>Год выпуска</label>
+    <div class="input-group mb-3">
+        <span class="input-group-text">От</span>
+        <input type="text" class="form-control" name="yearOfManufactureLowerBound" asp-for="YearOfManufactureLowerBound">      
+        <span asp-validation-for="YearOfManufactureUpperBound"></span>
+        <span class="input-group-text">До</span>
+        <input type="text" class="form-control" name="yearOfManufactureUpperBound" asp-for="YearOfManufactureUpperBound">
+        <span asp-validation-for="YearOfManufactureUpperBound"></span>
+    </div>   
+    <label>Мощность двигателя, л.с.</label>
+    <div class="input-group mb-3">
+        <span class="input-group-text">От</span>
+        <input type="text" class="form-control" name="enginePowerLowerBound" asp-for="EnginePowerLowerBound">      
+        <span asp-validation-for="EnginePowerLowerBound"></span>
+        <span class="input-group-text">До</span>
+        <input type="text" class="form-control" name="enginePowerUpperBound" asp-for="EnginePowerUpperBound">
+        <span asp-validation-for="EnginePowerUpperBound"></span>
+    </div>   
+    <div class="form-floating mb-3">
+        @Html.DropDownListFor(x => x.Transmission, Html.GetEnumSelectList(typeof(TransmissionType)), "Выберите тип трансмиссии")
+    </div>   
+    <div class="form-floating mb-3">
+        @Html.DropDownListFor(x => x.Type, Html.GetEnumSelectList(typeof(CarType)), "Выберите тип машины")
+    </div>
+    <label>Километраж</label>
+    <div class="input-group mb-3">
+        <span class="input-group-text">От</span>
+        <input type="text" class="form-control" name="kilometrageLowerBound" asp-for="KilometrageLowerBound">      
+        <span asp-validation-for="KilometrageLowerBound"></span>
+        <span class="input-group-text">До</span>
+        <input type="text" class="form-control" name="kilometrageUpperBound" asp-for="KilometrageUpperBound">
+        <span asp-validation-for="KilometrageUpperBound"></span>
+    </div>  
+    <label>Цена</label>
+    <div class="input-group mb-3">
+        <span class="input-group-text">От</span>
+        <input type="text" class="form-control" name="priceLowerBound" asp-for="PriceLowerBound">      
+        <span asp-validation-for="PriceLowerBound"></span>
+        <span class="input-group-text">До</span>
+        <input type="text" class="form-control" name="priceUpperBound" asp-for="PriceUpperBound">
+        <span asp-validation-for="PriceUpperBound"></span>
+    </div> 
+    <button type="submit" class="btn btn-primary">Разместить запрос</button>
+</form>

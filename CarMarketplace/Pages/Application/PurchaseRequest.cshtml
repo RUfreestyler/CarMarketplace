@@ -1,0 +1,29 @@
+﻿@page "{id}"
+@model CarMarketplace.Pages.Application.PurchaseRequestModel
+@using CarMarketplace.Services
+@using System.ComponentModel.DataAnnotations
+@{
+    ViewData["Title"] = "Запрос на покупку";
+}
+
+<h1 class="display-5 mb-3" >@string.Format($"{Model.PurchaseRequest.Make} {Model.PurchaseRequest.Model}")</h1>
+<div class="input-group mb-3">
+  <span class="input-group-text" id="inputGroup-sizing-default">Покупатель</span>
+  <input type="text" class="form-control" value="@Model.Owner.Name" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" readonly>
+</div>
+<div class="input-group mb-3">
+  <span class="input-group-text" id="inputGroup-sizing-default">Город</span>
+  <input type="text" class="form-control" value="@Model.Owner.City" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" readonly>
+</div>
+<div class="input-group mb-3">
+  <span class="input-group-text" id="inputGroup-sizing-default">Номер телефона</span>
+  <input type="text" class="form-control" value="@Model.Owner.PhoneNumber" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" readonly>
+</div>
+<h4 class="mb-3">Требования к машине</h4>
+<ul class="list-group">
+  <li class="list-group-item">Год выпуска: @string.Format($"от {Model.PurchaseRequest.YearOfManufactureLowerBound} до {Model.PurchaseRequest.YearOfManufactureUpperBound}")</li>
+  <li class="list-group-item">Мощность двигателя: @string.Format($"от {Model.PurchaseRequest.EnginePowerLowerBound} до {Model.PurchaseRequest.EnginePowerUpperBound}") л.с.</li>
+  <li class="list-group-item">Тип трансмиссии: @string.Format(Model.PurchaseRequest.Transmission.GetAttribute<DisplayAttribute>().Name)</li>
+  <li class="list-group-item">Техническое состояние: @string.Format(Model.PurchaseRequest.Type.GetAttribute<DisplayAttribute>().Name)</li>
+  <li class="list-group-item">Пробег: @string.Format($"от {Model.PurchaseRequest.KilometrageLowerBound} до {Model.PurchaseRequest.KilometrageUpperBound}") км</li>
+</ul>

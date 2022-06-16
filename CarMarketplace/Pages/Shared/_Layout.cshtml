@@ -14,14 +14,20 @@
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-page="/Index">Сайт продажи автомобилей</a>
                 <ul class="navbar-nav flex-grow-1 justify-content-end">
-                    <li class="nav-item">
-                        <a class="btn btn-outline-primary" asp-page="Application/PlaceAdvertisement">Разместить объявление</a>
+                    <li class="nav-item me-2">
+                        <a class="btn btn-outline-primary" asp-page="/Application/PlaceAdvertisement">Разместить объявление</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link btn" asp-page="Application/MyAdvertisements">Мои объявления</a>
+                        <a class="btn btn-outline-primary" asp-page="/Application/PlacePurchaseRequest">Разместить запрос на покупку</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link btn" asp-page="Application/SignIn">@ViewData["UserName"]</a>               
+                        <a class="nav-link btn" asp-page="/Application/MyAdvertisements">Мои объявления</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn" asp-page="/Application/MyPurchaseRequests">Мои запросы на покупку</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn" asp-page="/Application/Profile">Мой профиль</a>               
                     </li>
                 </ul>
             </div>

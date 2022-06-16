@@ -2,31 +2,37 @@
 @model CarMarketplace.Pages.Application.ProfileModel
 @{
     ViewData["Title"] = "Профиль";
-    ViewData["UserName"] = "Вход/Регистрация";
+    ViewData["ID"] = HttpContext.User.FindFirst("ID").Value;
 }
 
 <h1 class="display-6 mb-3">Профиль</h1>
-<label class="mb-3">Номер аккаунта - 123</label>
-<form>
-    <label>Имя</label>
+<label class="mb-3">Номер аккаунта - @ViewData["ID"]</label>
+<form method="post" class="mb-3">
     <div class="form-text mb-3">
-        <input type="text" class="form-control" id="formName">
-    </div>
-    <label>Город</label>
+        <label for="name">Имя</label>
+        <input type="text" class="form-control" name="name" asp-for="Name" value="@Model.User.Name">       
+        <span asp-validation-for="Name"></span>
+    </div>    
     <div class="form-text mb-3">
-        <input type="text" class="form-control" id="formCity">
-    </div>
-    <label>Номер телефона</label>
+        <label for="city">Город</label>
+        <input type="text" class="form-control" name="city" asp-for="City" value="@Model.User.City">       
+        <span asp-validation-for="City"></span>
+    </div>   
     <div class="form-text mb-3">
-        <input type="tel" class="form-control" id="formPhone">
-    </div>
-    <label>Почта</label>
+        <label for="city">Номер телефона</label>
+        <input type="tel" class="form-control" name="phone" asp-for="Phone" value="@Model.User.Phone">       
+        <span asp-validation-for="Phone"></span>
+    </div>    
     <div class="form-text mb-3">
-        <input type="email" class="form-control" id="formEmail">
-    </div>
-    <label>Пароль</label>
+        <label for="email">Почта</label>
+        <input type="email" class="form-control" name="email" asp-for="Email" value="@Model.User.Email">      
+        <span asp-validation-for="Email"></span>
+    </div>    
     <div class="form-text mb-3">
-        <input type="password" class="form-control" id="formPassword">
+        <label for="password">Пароль</label>
+        <input type="password" class="form-control" name="password" asp-for="Password">     
+        <span asp-validation-for="Password"></span>
     </div>
     <button type="submit" class="btn btn-primary">Сохранить</button>
 </form>
+<a class="btn btn-danger" asp-page="Logout">Выйти</a>

@@ -1,0 +1,56 @@
+﻿@page
+@model CarMarketplace.Pages.Application.MyPurchaseRequestsModel
+@{
+    ViewData["Title"] = "Мои запросы на покупку";
+}
+
+<h1 class="display-6 mb-3">Мои запросы на покупку</h1>
+<div class="container">
+    @if (!Model.PurchaseRequestsViewModel.Any())
+    {
+        <p class="lead">Вы ещё не разместили запросов на покупку</p>
+    }
+    @foreach (var pr in Model.PurchaseRequestsViewModel)
+    {
+        <div class="row justify-content-center">
+            <div class="card row my-2 bg-light" style="max-width: 540px;">
+                <div class="row justify-content-end">
+                    <button type="button" class="btn-close" aria-label="Close" data-bs-toggle="modal" data-bs-target="@string.Format($"#exampleModal{pr.ID}")"></button>
+                </div>
+                <div class="modal fade" id="@string.Format($"exampleModal{pr.ID}")" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Подтверждение удаления</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                Вы уверены что хотите удалить запрос "@pr.Title"?
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+                                <a class="btn btn-danger" asp-route-id="@pr.ID" asp-page="DeletePurchaseRequest">Удалить</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a class="text-dark nav-link" asp-route-id="@pr.ID" asp-page="PurchaseRequest">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img />
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">@pr.Title</h5>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <div class="d-grid gap-2 d-md-block">
+                    <a class="btn btn-outline-primary my-2" asp-route-id="@pr.ID" asp-page="SuitableCars">Подобрать автомобиль</a>  
+                    <a class="btn btn-outline-secondary my-2" asp-route-id="@pr.ID" asp-page="EditPurchaseRequest">Редактировать</a> 
+                </div>                                     
+            </div>     
+        </div>
+    }
+</div>

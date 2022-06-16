@@ -1,49 +1,51 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using CarMarketplace.Models;
 using CarMarketplace.Services;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authentication;
 
 namespace CarMarketplace.Pages.Application
 {
     public class SignInModel : PageModel
     {
-        [BindProperty]
-        public string? Login { get; set; }
+        private readonly IRepository repository;
+        private readonly IHashComputer hasher;
 
-        [BindProperty]
-        public string? Password { get; set; }
-        public string? UserName { get; set; }
-
-        private IRepository marketplaceRepository;
-
-        public SignInModel(IRepository marketplaceRepository)
+        public SignInModel(IRepository marketplaceRepository, IHashComputer hasher)
         {
-            this.marketplaceRepository = marketplaceRepository;
-            UserName = "Вход/Регистрация";
+            this.repository = marketplaceRepository;
+            this.hasher = hasher;
         }
 
-        public void OnGet()
-        {
-        }
-
-        public IActionResult OnPost()
+        public async Task<IActionResult> OnPost(string? returnUrl)
         {
             if (!ModelState.IsValid)
             {
                 return Page();
             }
 
-            var owner = marketplaceRepository.GetAllOwners()
-                .Where(x => x.Email == Login || x.PhoneNumber == Login)
-                .FirstOrDefault();
-
-            if(owner != null && owner.PasswordHash == Hasher.GetHashCode(Password))
+            if(!repository.GetAllOwners().Where(x => x.Email == HttpContext.Request.Form["login"] ||
+                x.PhoneNumber == HttpContext.Request.Form["login"]).Any())
             {
-                UserName = owner.Name;
-                return RedirectToPage("/Index", new { UserName });
+                return Redirect("SignUp");
             }
 
-            return Page();
+            var user = repository.GetAllOwners()
+                .Where(x => (x.Email == HttpContext.Request.Form["login"] || 
+                x.PhoneNumber == HttpContext.Request.Form["login"]) &&
+                x.PasswordHash == hasher.GetHashCode(HttpContext.Request.Form["password"]))
+                .FirstOrDefault();
+
+            if (user == null)
+                return Unauthorized();
+
+            var claims = new List<Claim>() { new Claim("ID", user.ID.ToString()) };
+
+            var claimsIdentity = new ClaimsIdentity(claims, "Cookies");
+            await HttpContext.SignInAsync("Cookies", new ClaimsPrincipal(claimsIdentity));
+
+
+            return Redirect(returnUrl ?? "/");
         }
     }
 }
